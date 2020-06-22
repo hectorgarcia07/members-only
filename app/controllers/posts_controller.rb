@@ -8,14 +8,21 @@ class PostsController < ApplicationController
         @posts = Post.all
     end
 
+    #will show the current users post only
+    def show
+        @posts = Post.where(user_id: current_user.id)
+    end
+
+    #will create a post
     def create
         @post = current_user.posts.build(post_params)
         if @post.save
-            flash[:notice] = "Post successfully made"
+            flash[:notice] = "Post successfully made!"
+            redirect_to root_url
         else
-            flash[:notice] = "Error in making post"
+            flash[:alert] = "Cannot submit an empty post."
+            redirect_to new_post_url
         end
-        redirect_to root_url
     end
 
     #renders view for post.
@@ -24,8 +31,7 @@ class PostsController < ApplicationController
     end
 
     private
-
-        def post_params
-            params.require(:post).permit(:post)
-        end
+    def post_params
+        params.require(:post).permit(:post)
+    end
 end

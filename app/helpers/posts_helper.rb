@@ -7,4 +7,13 @@ module PostsHelper
             User.find_by(id: user_id).username
         end
     end
+
+    def get_message_type(type)
+        print type
+        if type == "log-in"
+            "log-in."
+        else 
+            "post."
+        end
+    end
 end

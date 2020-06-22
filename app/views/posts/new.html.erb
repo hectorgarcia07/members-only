@@ -1,6 +1,22 @@
-<%= form_with(model: @post, local: true) do |f| %>
-    <%= f.label :post %>
-    <%= f.text_field :post%>
-            
-    <%= f.submit "Submit Post" %>
+<% provide(:message, 'post') %>
+
+<%= form_with(model: @post, local: true,
+:html => {:class => 'd-flex flex-column justify-content-center'}) do |f| %>
+    <% if flash[:alert]%>
+        <%= render "devise/shared/custom_error_messages" %>
+    <% end %>
+
+    <div class="d-flex flex-column align-items-center">
+        <h2>New Post!</h2>
+        <p>Write your new post below.</p>
+    </div>
+
+    <div class="d-flex flex-column align-items-center">
+        <%= f.text_area :post%>
+    </div>
+    
+    <div class="d-flex flex-row justify-content-center">
+        <%= f.submit "Submit Post", class: "spacing"%> 
+    </div>
+
 <% end %>

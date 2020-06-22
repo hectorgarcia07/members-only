@@ -8,3 +8,16 @@ body {
     margin: 5px;
     border-radius: 25px;
 }
+
+.container-column{
+    flex-direction: column;
+}
+
+.spacing{
+    margin: 8px 0px;
+}
+
+.container{
+    border: 1px solid green;
+}
+

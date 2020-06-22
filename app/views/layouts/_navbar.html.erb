@@ -1,6 +1,6 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="#">Members Only</a>
+        <%= link_to "Members Only", root_path, { :class => "navbar-brand" } %>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
@@ -8,7 +8,10 @@
                 </li>
                 <% if user_signed_in? %>
                     <li class="nav-item">
-                        <%= link_to "#{current_user.username} #{ "Post".pluralize(current_user.posts.count) }", '#', { :class=>"nav-link"} %>
+                        <%= link_to "Your Posts", post_path(current_user.id), { :class=>"nav-link"} %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to "Create Post", new_post_path, { :class=>"nav-link"} %>
                     </li>
                 <% end %>
             </ul>
