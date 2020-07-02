@@ -12,4 +12,11 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to new_user_session_path
   end
+
+  test "should get the root" do
+    get root_url
+    assert_response :success
+  end
+
+  
 end

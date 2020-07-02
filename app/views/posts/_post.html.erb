@@ -1,6 +1,7 @@
 <div class="container post-border">
     <div style="border-bottom: solid 1px black;">
-        <%= get_username(post.user_id) %>
+        <%= gravatar_for(post.user_id)%>
+        <%= get_username(post.user_id)%>
     </div>
     <div>
         <%= "#{post.post}" %>

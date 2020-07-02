@@ -4,7 +4,7 @@ module PostsHelper
         unless user_signed_in?
             "Anonymous"
         else
-            User.find_by(id: user_id).username
+            User.find(user_id).username
         end
     end
 
@@ -15,5 +15,20 @@ module PostsHelper
         else 
             "post."
         end
+    end
+
+    # Returns the Gravatar for the given user.
+    def gravatar_for(user_id)
+        #default will be an anonymous mask icon
+        email = "csharp12321@gmail.com"
+        username = "Anonymous"
+
+        if user_signed_in?
+            email = User.find(user_id).email
+            username = User.find(user_id).username
+        end
+        gravatar_id = Digest::MD5::hexdigest(email.downcase)
+        gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=35"
+        image_tag(gravatar_url, alt: username, class: "gravatar")
     end
 end
