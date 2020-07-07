@@ -11,13 +11,13 @@
   <% end %>
 
   <div class="d-flex flex-column align-items-center">
-    <div class="d-flex flex-column">
-      <div class="d-flex flex-column">
+    <div class="d-flex flex-column ">
+      <div class="d-flex flex-column spacing">
         <%= f.label :email %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
 
-      <div class="d-flex flex-column">
+      <div class="d-flex flex-column spacing">
         <%= f.label :password %>
         <%= f.password_field :password, autocomplete: "current-password" %>
 

@@ -10,7 +10,7 @@ class PostsController < ApplicationController
 
     #will show the current users post only
     def show
-        @posts = Post.where(user_id: current_user.id)
+        @posts = current_user.posts
     end
 
     #will create a post
@@ -28,6 +28,24 @@ class PostsController < ApplicationController
     #renders view for post.
     def new
         @post = Post.new
+    end
+
+    def edit
+        @post = Post.find(params[:id])
+    end
+
+    def update
+        @post = Post.find(params[:id])
+        if @post.update(post_params)
+            flash[:notice] = "Post updated sucessfully!"
+            redirect_to root_url
+        else
+            render 'posts/edit'
+        end
+    end
+
+    def delete
+
     end
 
     private

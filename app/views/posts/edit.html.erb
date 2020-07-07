@@ -1,0 +1,22 @@
+<% provide(:message, 'update') %>
+
+<%= form_with(model: @post, local: true,
+:html => {:class => 'd-flex flex-column justify-content-center'}) do |f| %>
+    <% if flash[:alert]%>
+        <%= render "devise/shared/custom_error_messages" %>
+    <% end %>
+
+    <div class="d-flex flex-column align-items-center">
+        <h2>Edit Post!</h2>
+        <p>Edit your post below.</p>
+    </div>
+
+    <div class="d-flex flex-column align-items-center">
+        <%= f.text_area :post, autofocus: true, autocomplete: "post"%>
+    </div>
+    
+    <div class="d-flex flex-row justify-content-center">
+        <%= f.submit "Submit Post", class: "spacing"%> 
+    </div>
+
+<% end %>

@@ -12,6 +12,8 @@ module PostsHelper
         print type
         if type == "log-in"
             "log-in."
+        elsif type == 'update'
+            "update post."
         else 
             "post."
         end
@@ -30,5 +32,9 @@ module PostsHelper
         gravatar_id = Digest::MD5::hexdigest(email.downcase)
         gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=35"
         image_tag(gravatar_url, alt: username, class: "gravatar")
+    end
+
+    def is_post_owner?(posts_user_id)
+        true if current_user.id == posts_user_id
     end
 end

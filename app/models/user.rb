@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :posts
   
   validates :username, presence: true, length: {maximum: 50}, uniqueness: true
-  validates :password, presence: true
+  
   validates :email, presence: true, uniqueness: true
 
 
