@@ -2,7 +2,7 @@ class User < ApplicationRecord
   before_save {self.email = email.downcase}
 
   #user will be able to have as much posts as they want
-  has_many :posts
+  has_many :posts, dependent: :destroy
   
   validates :username, presence: true, length: {maximum: 50}, uniqueness: true
   

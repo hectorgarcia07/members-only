@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
+    load_and_authorize_resource # CanCan
     #only register users can create a post
-    before_action :authenticate_user!, only: [:create, :new]
+    before_action :authenticate_user!, only: [:create, :new, :show, :edit]
 
     #will show all the post with 'anonymous' as username if not logged in
     #otherwise, if logged in, will display all post with username
@@ -10,7 +11,7 @@ class PostsController < ApplicationController
 
     #will show the current users post only
     def show
-        @posts = current_user.posts
+        @posts = current_user.posts if user_signed_in?
     end
 
     #will create a post
@@ -30,8 +31,10 @@ class PostsController < ApplicationController
         @post = Post.new
     end
 
+    #renders a particular post to edit
     def edit
-        @post = Post.find(params[:id])
+        @post = Post.find_by(id: params[:id])
+        redirect_to root_url if @post == nil
     end
 
     def update
@@ -40,6 +43,7 @@ class PostsController < ApplicationController
             flash[:notice] = "Post updated sucessfully!"
             redirect_to root_url
         else
+            flash.now[:error] = "Error: Post cannot be empty."
             render 'posts/edit'
         end
     end

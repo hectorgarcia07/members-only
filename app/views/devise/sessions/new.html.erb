@@ -1,4 +1,4 @@
-<% provide(:message, 'log-in') %>
+<%= flash_messages %>
 
 <div class="d-flex flex-row justify-content-center">
   <h2>Log in</h2>
@@ -6,10 +6,6 @@
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name),
 :html => {:class => 'd-flex flex-column justify-content-center'}) do |f| %>
-  <% if flash[:alert]%>
-    <%= render "devise/shared/custom_error_messages" %>
-  <% end %>
-
   <div class="d-flex flex-column align-items-center">
     <div class="d-flex flex-column ">
       <div class="d-flex flex-column spacing">

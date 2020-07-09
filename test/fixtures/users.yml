@@ -3,14 +3,14 @@
 hector:
   email: "hector@test.com"
   username: "hector123"
-  encrypted_password: <%= Devise.bcrypt(User, 'hector12321') %>
+  encrypted_password: <%= User.new.send(:password_digest, 'hector12321') %>
 
 garcia:
   email: "garcia@test.com"
   username: "garcia123"
-  encrypted_password: <%= Devise.bcrypt(User, 'garcia12321') %>
+  encrypted_password: <%= User.new.send(:password_digest, 'garcia12321') %>
 
 julian:
   email: "julian@test.com"
   username: "julian123"
-  encrypted_password: <%= Devise.bcrypt(User, 'julian12321') %>
+  encrypted_password: <%= User.new.send(:password_digest, 'julian12321') %>
