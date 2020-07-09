@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
     load_and_authorize_resource # CanCan
     #only register users can create a post
-    before_action :authenticate_user!, only: [:create, :new, :show, :edit]
+    before_action :authenticate_user!, except: [:index]
 
     #will show all the post with 'anonymous' as username if not logged in
     #otherwise, if logged in, will display all post with username

@@ -9,7 +9,6 @@ class Ability
       
     else
       can :read, Post
-      
     end
   end
 end

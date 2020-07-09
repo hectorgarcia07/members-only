@@ -1,2 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+one:
+  id: 1
+  post: "Testing one"
+  user: hector
+
+two:
+  id: 2
+  post: "Testing two"
+  user: hector
+
+three: 
+  id: 3
+  post: "Testing three"
+  user: garcia
