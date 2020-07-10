@@ -6,9 +6,7 @@ class Ability
   def initialize(user)
     if user.present?
       can :manage, Post, user_id: user.id
-      
-    else
-      can :read, Post
     end
+    can :read, Post
   end
 end

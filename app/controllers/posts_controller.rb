@@ -6,12 +6,12 @@ class PostsController < ApplicationController
     #will show all the post with 'anonymous' as username if not logged in
     #otherwise, if logged in, will display all post with username
     def index
-        @posts = Post.all
+        @posts = Post.paginate(page: params[:page], per_page: 7).order('id DESC')
     end
 
     #will show the current users post only
     def show
-        @posts = current_user.posts if user_signed_in?
+        @posts = current_user.posts.paginate(page: params[:page], per_page: 7).order('id DESC') if user_signed_in?
     end
 
     #will create a post

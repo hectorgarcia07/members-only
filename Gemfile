@@ -6,6 +6,9 @@ gem 'popper_js', '~> 1.14.5'
 gem 'faker', '2.1.2'
 gem 'cancancan'
 gem 'devise'
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap4'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
 # Use Puma as the app server

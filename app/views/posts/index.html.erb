@@ -1,3 +1,5 @@
 <%= flash_messages %>
 
 <%= render @posts %>
+
+<%= will_paginate @posts, list_classes: %w(pagination justify-content-center)  %>
