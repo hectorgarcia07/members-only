@@ -1,5 +1,8 @@
 class User < ApplicationRecord
+  rolify
   before_save {self.email = email.downcase}
+  after_create :assign_default_role
+
 
   #user will be able to have as much posts as they want
   has_many :posts, dependent: :destroy
@@ -13,4 +16,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def assign_default_role
+    self.add_role(:user) if self.roles.blank?
+  end
 end

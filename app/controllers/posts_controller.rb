@@ -9,8 +9,7 @@ class PostsController < ApplicationController
         @posts = Post.paginate(page: params[:page], per_page: 7).order('id DESC')
     end
 
-    #will show the current users post only
-    def show
+    def my_posts
         @posts = current_user.posts.paginate(page: params[:page], per_page: 7).order('id DESC') if user_signed_in?
     end
 
@@ -49,7 +48,10 @@ class PostsController < ApplicationController
     end
 
     def delete
-
+        post = Post.find_by(params[:id])
+        post.delete
+        flash[:notice] = "Post has been deleted!"
+        redirect_to root_url
     end
 
     private

@@ -28,6 +28,6 @@ module PostsHelper
 
     #returns true if the post belongs to the current user
     def is_post_owner?(posts_user_id)
-        true if current_user.id == posts_user_id
+        true if current_user.id == posts_user_id or current_user.has_role? :admin
     end
 end
