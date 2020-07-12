@@ -20,18 +20,7 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   config.mailer_sender = 'noreply@example.com'
-  config/environments/production.rb :
-
-  config.action_mailer.default_url_options = { :host => 'dry-basin-58771.herokuapp.com' }
-  ActionMailer::Base.smtp_settings = {
-    :address        => "smtp.sendgrid.net",
-    :port           => "25",
-    :authentication => :plain,
-    :user_name      => ENV['SENDGRID_USERNAME'],
-    :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => ENV['SENDGRID_DOMAIN']
-  }
-
+  
   # Configure the class responsible to send e-mails.
   config.mailer = 'Devise::Mailer'
 
