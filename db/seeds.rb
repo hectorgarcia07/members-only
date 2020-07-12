@@ -2,6 +2,7 @@
 admin = User.new(username: "admin", email: "admin@admin.com", password: "password",
                                                 password_confirmation: "password")
 admin.add_role :admin
+admin.skip_confirmation!
 admin.save!
 
 #generates fake users
@@ -10,8 +11,10 @@ admin.save!
     email = "testing-#{n+1}@test.com"
     password = 'password'
     password_confirmation = 'password'
-    user = User.create!(username: username, email: email, password: password, 
+    user = User.new(username: username, email: email, password: password, 
                                 password_confirmation: password_confirmation)
+    user.skip_confirmation!
+    user.save!
 
     #randomly create 1 - 6 posts per new user
     (Random.rand(5) + 1).times do 
