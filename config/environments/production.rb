@@ -64,13 +64,12 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { :host => 'dry-basin-58771.herokuapp.com' }
   ActionMailer::Base.smtp_settings = {
-  :user_name => ENV['SENDGRID_USERNAME'],
-  :password => ENV['SENDGRID_PASSWORD'],
-  :domain => 'dry-basin-58771.herokuapp.com',
-  :address => 'smtp.sendgrid.net',
-  :port => 465,
-  :authentication => :plain,
-  :enable_starttls_auto => true
+    domain: 'dry-basin-58771.herokuapp.com',
+    address:        "smtp.sendgrid.net",
+    port:            587,
+    authentication: :plain,
+    user_name:      'apikey',
+    password:       ENV['SENDGRID_API_KEY']
 }
 
   # Ignore bad email addresses and do not raise email delivery errors.
