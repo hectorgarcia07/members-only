@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
-gem 'dotenv-rails', groups: [:development, :test]
 gem 'popper_js', '~> 1.14.5'
 gem 'faker', '2.1.2'
 gem 'cancancan'
