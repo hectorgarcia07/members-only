@@ -4,13 +4,16 @@ one:
   id: 1
   post: "Testing one"
   user: hector
+  created_at: <%= 2.months.ago %>
 
 two:
   id: 2
   post: "Testing two"
   user: hector
+  created_at: <%= 2.months.ago %>
 
 three: 
   id: 3
   post: "Testing three"
   user: garcia
+  created_at: <%= 2.months.ago %>

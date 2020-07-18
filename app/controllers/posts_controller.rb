@@ -15,6 +15,7 @@ class PostsController < ApplicationController
 
     #will create a post
     def create
+
         @post = current_user.posts.build(post_params)
         if @post.save
             flash[:notice] = "Post successfully made!"
