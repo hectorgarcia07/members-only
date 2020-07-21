@@ -16,7 +16,7 @@
                 <% if user_signed_in? %>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span><%= gravatar_for(current_user.id)%></span>
+                            <span><%= gravatar_for(current_user)%></span>
                             <span><%= current_user.username %></span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">

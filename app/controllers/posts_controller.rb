@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    load_and_authorize_resource # CanCan
+    load_and_authorize_resource 
     #only register users can create a post
     before_action :authenticate_user!, except: [:index]
 
@@ -10,12 +10,12 @@ class PostsController < ApplicationController
     end
 
     def my_posts
-        @posts = current_user.posts.paginate(page: params[:page], per_page: 7).order('id DESC') if user_signed_in?
+        @posts = current_user.posts.paginate(page: params[:page], 
+                                per_page: 7).order('id DESC') if user_signed_in?
     end
 
     #will create a post
     def create
-
         @post = current_user.posts.build(post_params)
         if @post.save
             flash[:notice] = "Post successfully made!"

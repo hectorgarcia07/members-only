@@ -9,21 +9,16 @@ module PostsHelper
     end
 
     # Returns the Gravatar for the given user.
-    def gravatar_for(user_id)
-        #default will be an anonymous mask icon
-        email = "csharp12321@gmail.com"
-        username = "Anonymous"
-
+    def gravatar_for(user)
         #signed in user should be able to see
         #username and profile picture
         if user_signed_in?
-            user = User.find_by(id: user_id)
-            email = user.email.downcase
-            username = user.username
+            gravatar_id = Digest::MD5::hexdigest(user.email)
+            gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=35"
+            image_tag(gravatar_url, alt: user.username, class: "gravatar")
+        else
+            image_tag("anon.jpeg", alt: "Anonymous User");
         end
-        gravatar_id = Digest::MD5::hexdigest(email)
-        gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=35"
-        image_tag(gravatar_url, alt: username, class: "gravatar")
     end
 
     #returns true if the post belongs to the current user

@@ -1,5 +1,5 @@
 <div class="d-flex flex-row justify-content-center">
-  <h2>Edit <%= resource_name.to_s.humanize %></h2>
+  <h2>Edit Your Profile</h2>
 </div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name),
@@ -55,12 +55,21 @@ html: { class: 'd-flex flex-column justify-content-center', method: :put }) do |
   </div>
 <% end %>
 
-<%= gravatar_for current_user.id %>
-<a href="https://gravatar.com/emails" target="_blank">Change</a>
+<hr>
+
+<div class="d-flex flex-column align-items-center">
+  <h2>Your Profile Picture</h2>
+  <%= gravatar_for current_user %>
+  <a href="https://gravatar.com/emails" target="_blank">Change</a>
+</div>
+
+<hr>
 
 <div class="d-flex flex-row justify-content-center">
   <h2>Cancel my account</h2>
 </div>
+
+<hr>
 
 <div class="d-flex flex-row justify-content-center">
   <div class="d-flex flex-column spacing align-items-center">
