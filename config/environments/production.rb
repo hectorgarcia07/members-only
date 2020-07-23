@@ -60,16 +60,17 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "members_only_production"
 
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_caching = false
 
   config.action_mailer.default_url_options = { :host => 'dry-basin-58771.herokuapp.com' }
-  ActionMailer::Base.smtp_settings = {
-    domain: 'dry-basin-58771.herokuapp.com',
-    address:        "smtp.sendgrid.net",
-    port:            587,
-    authentication: :plain,
-    user_name:      'apikey',
-    password:       ENV['SENDGRID_API_KEY']
+  config.action_mailer.smtp_settings = {
+  :address              => "smtp.gmail.com",
+  :port                 => 587,
+  :user_name            => ENV['GMAIL'],
+  :password             => ENV['GMAIL-PASSWORD'],
+  :authentication       => "plain",
+  :enable_starttls_auto => true
 }
 
   # Ignore bad email addresses and do not raise email delivery errors.
